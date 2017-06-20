@@ -23,13 +23,15 @@ io.on('connection', (socket) => {
 
     socket.on('createMessage', function(message) {
         console.log('Received message from the user', message);
+
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        });
     });
 
-    socket.emit('newMessage', {
-        from: 'kamalakannan',
-        text: 'hey buddy!Are you free this evening?',
-        createdAt: 123
-    })
+
 });
 
 server.listen(port, () => {
