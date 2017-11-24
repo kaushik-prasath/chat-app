@@ -80,7 +80,6 @@ jQuery('#message-form').on('submit',function(e){
     var inputButton = jQuery('[name=message]');
 
     socket.emit('createMessage',{
-        from: 'User',
         text:inputButton.val()
   },function(){
         inputButton.val('');
