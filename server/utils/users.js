@@ -11,11 +11,13 @@ class Users {
     }
 
     removeUser(id){
-        var user = _.remove(this.users, function(user){
-            return user.id === id;
-        });
-
-        return user[0];
+        var user = this.getUser(id);
+        
+            if (user) {
+              this.users = this.users.filter((user) => user.id !== id);
+            }
+        
+            return user;
     }
 
     getUser(id){
